@@ -130,6 +130,10 @@ void read(xnb* xnb, readerManager* readers, void* target)
 	{
 		throw std::runtime_error("Invalid type reader count");
 	}
+	if (xnb->data == nullptr)
+	{
+		throw std::runtime_error("Data is not set");
+	}
 	uint8_t typeReaderIndex = xnb->data[0]-1;
 
 	//check if reader is registered

@@ -19,12 +19,12 @@ int main()
     xnb::xnb xnb;
     xnb::load(&xnb, path.c_str());
 
-	xnb::readerManager readers;
-	xnb::registerDefaultReaders(&readers);
+    xnb::readerManager readers;
+    xnb::registerDefaultReaders(&readers);
     //xnb::registerReader(&readers, "MyType", myReaderFunction);
 
-	xnb::texture2D texture;
-	xnb::read(&xnb, &readers, &texture);
+    xnb::texture2D texture;
+    xnb::read(&xnb, &readers, &texture);
 }
 ```
 
@@ -53,13 +53,19 @@ void myReader(xnb::xnb* xnb, void* target)
     MyType* myType = (MyType*)target;
     xnb::bufferReader reader(xnb->data, xnb->dataSize);
 
-    //possibly needs to skip the type reader index (which despite being 7BitEncodedInt, is usually 1 byte unless you have hundreds of readers)
+    //possibly needs to skip the type reader index 
+    //(which despite being 7BitEncodedInt, is usually 1 byte
+    //unless you have hundreds of readers)
+
+    //the xnb::read function will use this value to point you to the
+    //right reader, so it is useless here.
     //reader.seek(1, origin::current);
 
     reader->read(&myType->myInt);
     reader->read(&myType->myFloat);
 }
 ```
+NOTE: I'm not entirely sure reading the reader index inside `xnb::read` is the right approach since I think primitive types don't use this index (?). Anyway, I figured this is fine since no one in their right mind is going to store an index and the type reader inside a file to just read an Int32 anyway.
 ```cpp
 #include <myTypeReader.h>
 
