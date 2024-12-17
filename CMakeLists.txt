@@ -1,11 +1,10 @@
 cmake_minimum_required(VERSION 3.30.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-message(STATUS "CMake version: ${CMAKE_PREFIX_PATH}")
-
 project(xnb)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
