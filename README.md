@@ -1,8 +1,8 @@
-# XNB Reader for SpeedRunners
+# XNB Reader/Writer for SpeedRunners
 
 This is a simple XNB reader for the game SpeedRunners. It can be used to read and write XNB files (Texture2D, SoundEffect, and TextureAtlas) from the game. It also support reading LZX compressed XNB files without xcompress32.dll (but not LZ4 compressed, sorry).
 
-If you want output XNBs to be compressed, you need to install xcompress32.dll-- which is scary to include in this repository, but I found it [here](https://github.com/cpich3g/rpftool/blob/master/RPFTool/xcompress32.dll?raw=true).
+If you want output XNBs to be compressed, you need to install xcompress32.dll-- which is scary to include in this repository, but I found it [here](https://github.com/cpich3g/rpftool/blob/master/RPFTool/xcompress32.dll?raw=true). **Make sure to put it in the same directory as the executable.**
 
 ## Usage
 
@@ -25,7 +25,7 @@ If you want output XNBs to be compressed, you need to install xcompress32.dll-- 
 
 ## Building
 
-This was built with mingw (32-bit), but it should work with any 32-bit compiler. Compiling 64-bit is also possible, but xcompress32.dll is 32-bit, so you'd lose compressiong support, and also probably get a crash when loading xompress32.dll.
+This was built with mingw (32-bit), but it should work with any 32-bit compiler. Compiling 64-bit is also possible, but xcompress32.dll is 32-bit, so you'd lose compression support, and also probably get a crash when loading xompress32.dll.
 
 The CMakeLists.txt is included, but includes mingw-specific flags which you can comment out freely.
 
@@ -42,7 +42,7 @@ xnb::loadFromXnb(inputFile, texture); //or load from png
 xnb::saveToXnb(outputFile, texture, boolCompress); //or save to png
 ```
 
-so if you add your own format, ideally make support for `xnb::Type`, `xnb::saveToXnb`, `xnb::saveToType`, `xnb::loadFromXnb`, and `xnb::loadFromType` functions.
+so if you add your own format, ideally make support for `xnb::type`, `xnb::saveToXnb`, `xnb::saveToType`, `xnb::loadFromXnb`, and `xnb::loadFromType` functions.
 
 I've made some helpers for the repetitive tasks through the "helpers" at the bottom of `xnb.cpp` and `xnb.h`, so you can use those to help you out.
 
