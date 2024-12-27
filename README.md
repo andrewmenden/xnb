@@ -12,12 +12,15 @@ If you want output XNBs to be compressed, you need to install xcompress32.dll-- 
 ## Examples
 
 `xnb -u image.png image.xnb` - Converts `image.png` to `image.xnb` (uncompressed)
+
 `xnb image.xnb image.png` - Converts `image.xnb` to `image.png`
 
 `xnb atlas.json atlas.xnb`
+
 `xnb atlas.xnb atlas.json`
 
 `xnb sound.wav sound.xnb`
+
 `xnb sound.xnb sound.wav`
 
 ## Building
